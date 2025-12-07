@@ -589,3 +589,230 @@ display: none; /* 기본: 숨김 (PC) */
   flex: 1;
 }
 }
+
+/* ============================
+   📱 모바일 전용 글꼴/간격 튜닝
+   ============================ */
+   @media (max-width: 768px) {
+    /* 전체 기본 글자 크기 살짝 줄이기 */
+    body {
+      font-size: 14px;
+    }
+  
+    /* 상단 바 글자/패딩 조정 */
+    #topbar {
+      height: 52px;
+      padding: 0 12px;
+    }
+    .logo {
+      font-size: 20px;
+    }
+    .tab-btn {
+      font-size: 12px;
+      padding: 6px 10px;
+    }
+  
+    /* 구 선택 버튼 – 조금 더 작게 */
+    .district-btn {
+      font-size: 11px;
+      padding: 5px 0;
+    }
+  
+    /* 검색 결과 리스트 */
+    .result-title {
+      font-size: 13px;
+    }
+    .result-meta,
+    .result-distance {
+      font-size: 11px;
+    }
+  
+    /* 게시판 전체 패딩 줄이기 */
+    .board-container {
+      padding: 12px 10px;
+    }
+  
+    /* 게시글 카드 크기/글씨 줄이기 */
+    .board-item {
+      padding: 10px 12px;
+      border-radius: 6px;      /* 너무 동글한 느낌 살짝 줄임 */
+    }
+    .board-item-title {
+      font-size: 14px;
+    }
+    .board-item-meta {
+      font-size: 11px;
+    }
+    .board-item-content {
+      font-size: 13px;
+      line-height: 1.4;
+      word-break: break-word;  /* 긴 문장도 박스 안에서 줄 바꿈 */
+    }
+  
+    /* 좋아요/싫어요 버튼 */
+    .board-like-row,
+    .reaction-box {
+      gap: 4px;
+    }
+    .board-like-btn,
+    .reaction-btn {
+      font-size: 11px;
+      padding: 2px 8px;
+    }
+  
+    /* 대댓글 목록/입력폼 */
+    .board-comment-row,
+    .reply-item {
+      font-size: 12px;
+    }
+  
+    .reply-form {
+      gap: 4px;
+    }
+    .reply-name,
+    .reply-content {
+      font-size: 11px;
+      padding: 4px 6px;
+    }
+    .reply-submit {
+      font-size: 11px;
+      padding: 4px 8px;
+    }
+  
+    /* 입력 폼 전체적으로 살짝 축소 */
+    .board-row input,
+    .board-row textarea,
+    #boardName,
+    #boardTitle,
+    #boardContent {
+      font-size: 13px;
+    }
+  }
+  
+  /* ============================
+   모바일 전용 (가로 768px 이하)
+   ============================ */
+@media (max-width: 768px) {
+  /* 기본 글자 크기 살짝 축소 */
+  html {
+    font-size: 14px;
+  }
+
+  /* 상단바 조금 낮게 + 글씨 줄이기 */
+  #topbar {
+    height: 52px;
+    padding: 0 12px;
+  }
+
+  .logo {
+    font-size: 1.25rem; /* 따릉이 지도 */
+  }
+
+  .tab-nav {
+    gap: 4px;
+  }
+
+  .tab-btn {
+    font-size: 0.8rem;
+    padding: 6px 10px;
+  }
+
+  /* 지도 탭 레이아웃 : 모바일에서는 위에 사이드, 아래에 지도 */
+  #layout {
+    flex-direction: column;
+  }
+
+  #sidebar {
+    width: 100%;
+    padding: 8px 10px;
+  }
+
+  #currentGu,
+  #resultHeader {
+    font-size: 0.8rem;
+  }
+
+  #myLocationBtn {
+    font-size: 0.85rem;
+    padding: 8px;
+  }
+
+  .district-btn {
+    font-size: 0.8rem;
+    padding: 5px 0;
+  }
+
+  .search-box input,
+  .search-box button {
+    font-size: 0.85rem;
+    padding: 6px 8px;
+  }
+
+  .result-item {
+    padding: 7px 8px;
+  }
+
+  .result-title {
+    font-size: 0.9rem;
+  }
+
+  .result-meta,
+  .result-distance {
+    font-size: 0.75rem;
+  }
+
+  /* 지도 높이 : 상단/사이드바 높이 빼고 꽉 차게 */
+  #map {
+    height: calc(100vh - 260px);
+  }
+
+  /* ===== 게시판 쪽 ===== */
+  .board-container {
+    padding: 1rem 0.75rem;
+  }
+
+  .board-item {
+    padding: 0.6rem 0.75rem;
+    border-radius: 8px;  /* 너무 동글 → 살짝만 */
+  }
+
+  .board-item-title {
+    font-size: 0.95rem;
+  }
+
+  .board-item-meta {
+    font-size: 0.8rem;
+  }
+
+  .board-item-content {
+    font-size: 0.85rem;
+  }
+
+  .board-like-row {
+    gap: 6px;
+  }
+
+  .board-like-btn {
+    font-size: 0.75rem;
+    padding: 2px 8px;
+  }
+
+  /* 대댓글 폼 – 이름 짧고 내용 길게, 글자도 줄이기 */
+  .board-reply-form {
+    gap: 4px;
+  }
+
+  .board-reply-form input[type="text"] {
+    font-size: 0.8rem;
+    padding: 4px 6px;
+  }
+
+  .board-reply-form input[type="file"] {
+    font-size: 0.7rem;
+  }
+
+  .board-reply-form button {
+    font-size: 0.8rem;
+    padding: 4px 10px;
+  }
+}
