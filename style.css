@@ -689,23 +689,23 @@ display: none; /* 기본: 숨김 (PC) */
     }
   }
   
-  /* ============================
-   모바일 전용 (가로 768px 이하)
-   ============================ */
-@media (max-width: 768px) {
-  /* 기본 글자 크기 살짝 축소 */
-  html {
+ /* =========================
+   📱 모바일 전용 (가로 600px 이하)
+   ========================= */
+@media (max-width: 600px) {
+  /* 전체 글자 살짝 줄이기 */
+  body {
     font-size: 14px;
   }
 
-  /* 상단바 조금 낮게 + 글씨 줄이기 */
+  /* 상단 바 조금 낮게 + 안쪽 여백 줄이기 */
   #topbar {
     height: 52px;
     padding: 0 12px;
   }
 
   .logo {
-    font-size: 1.25rem; /* 따릉이 지도 */
+    font-size: 22px;   /* 원래보다 약간만 작게 */
   }
 
   .tab-nav {
@@ -713,76 +713,64 @@ display: none; /* 기본: 숨김 (PC) */
   }
 
   .tab-btn {
-    font-size: 0.8rem;
-    padding: 6px 10px;
+    padding: 4px 10px;
+    font-size: 13px;
   }
 
-  /* 지도 탭 레이아웃 : 모바일에서는 위에 사이드, 아래에 지도 */
+  /* 지도 레이아웃 – 데스크탑이랑 똑같이 두 칸 구조 유지,
+     대신 왼쪽 패널 폭 살짝 줄여서 지도가 너무 작아지지 않게 */
   #layout {
-    flex-direction: column;
+    display: flex;
+    flex-direction: row;
   }
 
   #sidebar {
-    width: 100%;
-    padding: 8px 10px;
+    width: 320px;           /* PC보다는 조금 좁게 */
+    padding: 10px;
   }
 
-  #currentGu,
-  #resultHeader {
-    font-size: 0.8rem;
-  }
-
-  #myLocationBtn {
-    font-size: 0.85rem;
-    padding: 8px;
-  }
-
-  .district-btn {
-    font-size: 0.8rem;
-    padding: 5px 0;
-  }
-
-  .search-box input,
-  .search-box button {
-    font-size: 0.85rem;
-    padding: 6px 8px;
-  }
-
-  .result-item {
-    padding: 7px 8px;
-  }
-
-  .result-title {
-    font-size: 0.9rem;
-  }
-
-  .result-meta,
-  .result-distance {
-    font-size: 0.75rem;
-  }
-
-  /* 지도 높이 : 상단/사이드바 높이 빼고 꽉 차게 */
   #map {
-    height: calc(100vh - 260px);
+    height: calc(100vh - 52px);  /* 상단바 뺀 나머지 꽉 채우기 */
   }
 
-  /* ===== 게시판 쪽 ===== */
+  /* ===== 게시판 영역 ===== */
+
   .board-container {
-    padding: 1rem 0.75rem;
+    max-width: 100%;
+    padding: 1rem 1rem 1.5rem;
+  }
+
+  /* ▶ 제목을 한 줄로 유지하기 위해 폰트/여백만 살짝 줄이기 */
+  .board-container h2 {
+    font-size: 1.35rem;     /* 원래보다 조금 작게 */
+    white-space: nowrap;    /* 줄바꿈 금지 */
+  }
+
+  .board-desc {
+    font-size: 0.85rem;
+  }
+
+  .board-form {
+    padding: 0.8rem;
   }
 
   .board-item {
-    padding: 0.6rem 0.75rem;
-    border-radius: 8px;  /* 너무 동글 → 살짝만 */
+    border-radius: 6px;     /* 너무 동글동글하지 않게 적당히 */
   }
 
   .board-item-title {
     font-size: 0.95rem;
   }
 
+  .board-item-content {
+    font-size: 0.9rem;
+  }
+
   .board-item-meta {
     font-size: 0.8rem;
   }
+}
+
 
   .board-item-content {
     font-size: 0.85rem;
@@ -815,4 +803,4 @@ display: none; /* 기본: 숨김 (PC) */
     font-size: 0.8rem;
     padding: 4px 10px;
   }
-}
+
