@@ -548,7 +548,7 @@ body {
   display: none; /* 기본: 숨김 (PC) */
 }
 
-/* 📱 768px 이하: 슬라이드 사이드바 + 폰트 더 줄이기 */
+/* 768px 이하: 1차 축소 + 슬라이드 사이드바 */
 @media (max-width: 768px) {
   body {
     font-size: 13px;
@@ -671,8 +671,7 @@ body {
   }
 }
 
-
-/* 📱 600px 이하: 더 작게 + 제목 한 줄 유지 */
+/* 600px 이하: 2차 축소 (더 작게) */
 @media (max-width: 600px) {
   body {
     font-size: 12px;
@@ -702,7 +701,7 @@ body {
   }
 
   #sidebar {
-    width: 280px;
+    width: 260px;
     padding: 8px;
   }
 
@@ -715,9 +714,8 @@ body {
     padding: 0.6rem 0.6rem 1rem;
   }
 
-  /* 제목이 줄바꿈 안 되도록 */
   .board-container h2 {
-    font-size: 1.1rem;
+    font-size: 1.05rem;
     white-space: nowrap;
   }
 
@@ -782,5 +780,137 @@ body {
   .board-reply-form button {
     font-size: 0.75rem;
     padding: 3px 8px;
+  }
+}
+
+/* 480px 이하: 3차 강제 축소 (아이폰 세로 기준) */
+@media (max-width: 480px) {
+  body {
+    font-size: 11px;
+  }
+
+  #topbar {
+    height: 42px;
+    padding: 0 6px;
+  }
+
+  .logo {
+    font-size: 16px;
+  }
+
+  .tab-nav {
+    gap: 2px;
+  }
+
+  .tab-btn {
+    padding: 2px 6px;
+    font-size: 10px;
+  }
+
+  /* 구 선택 버튼 더 작게 */
+  .district-btn {
+    font-size: 9px;
+    padding: 3px 0;
+  }
+
+  .search-box {
+    gap: 4px;
+  }
+
+  #searchInput {
+    font-size: 11px;
+    padding: 5px 6px;
+  }
+
+  #searchBtn {
+    font-size: 11px;
+    padding: 5px 6px;
+  }
+
+  /* 게시판 레이아웃 강하게 축소 */
+  .board-container {
+    padding: 0.5rem 0.5rem 0.8rem;
+  }
+
+  .board-container h2 {
+    font-size: 0.9rem;
+    white-space: nowrap;
+    transform: scale(0.9);          /* 가로 비율 강제 축소 */
+    transform-origin: left center;
+  }
+
+  .board-desc {
+    font-size: 0.75rem;
+  }
+
+  .board-form {
+    padding: 0.5rem;
+  }
+
+  .board-row {
+    margin-bottom: 0.5rem;
+  }
+
+  .board-row label {
+    font-size: 0.75rem;
+  }
+
+  .board-row input,
+  .board-row textarea {
+    font-size: 0.75rem;
+    padding: 0.3rem 0.4rem;
+  }
+
+  .board-submit {
+    font-size: 0.75rem;
+    padding: 0.3rem 0.8rem;
+  }
+
+  .board-item {
+    padding: 6px 8px;
+    border-radius: 5px;
+  }
+
+  .board-item-title {
+    font-size: 0.8rem;
+  }
+
+  .board-item-content {
+    font-size: 0.75rem;
+  }
+
+  .board-item-meta {
+    font-size: 0.7rem;
+  }
+
+  .board-like-row {
+    gap: 3px;
+  }
+
+  .board-like-btn {
+    font-size: 0.65rem;
+    padding: 1px 6px;
+  }
+
+  .board-comment-row {
+    font-size: 0.72rem;
+  }
+
+  .board-reply-form {
+    gap: 3px;
+  }
+
+  .board-reply-form input[type="text"] {
+    font-size: 0.7rem;
+    padding: 2px 4px;
+  }
+
+  .board-reply-form input[type="file"] {
+    font-size: 0.6rem;
+  }
+
+  .board-reply-form button {
+    font-size: 0.7rem;
+    padding: 2px 6px;
   }
 }
