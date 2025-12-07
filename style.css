@@ -152,9 +152,6 @@ body {
   text-align: center;
   color: #333;
 }
-.district-btn:hover {
-  background: #d2f5df;
-}
 .district-btn.active {
   background: #00a94c;
   color: white;
@@ -185,19 +182,13 @@ body {
   cursor: pointer;
 }
 
-/* 리스트 헤더 */
+/* 리스트 */
 #resultHeader {
   font-size: 13px;
   color: #555;
   margin-bottom: 6px;
 }
 
-#resultCount {
-  font-weight: 700;
-  color: #222;
-}
-
-/* 결과 리스트 */
 #resultList {
   display: flex;
   flex-direction: column;
@@ -209,25 +200,21 @@ body {
   border-radius: 8px;
   padding: 9px 10px;
   box-shadow: 0 0 0 1px #eee;
-  cursor: pointer;
   transition: 0.15s;
 }
+
 .result-item:hover {
   box-shadow: 0 0 0 1px #00a94c;
-  background: #f5fff9;
 }
 
 .result-title {
   font-size: 14px;
   font-weight: 700;
-  margin-bottom: 3px;
-  color: #222;
 }
 
 .result-meta {
   font-size: 12px;
   color: #777;
-  margin-bottom: 3px;
 }
 
 .result-distance {
@@ -242,70 +229,15 @@ body {
   height: 100%;
 }
 
-/* 📍 이모지 마커 */
+/* 📍 마커 */
 .station-marker {
   font-size: 24px;
-  line-height: 24px;
-  text-align: center;
   transform: translate(-50%, -100%);
 }
 
-/* 요금 탭 */
-#fare-wrap {
-  padding: 24px 40px;
-  max-width: 900px;
-  margin: 0 auto;
-}
-
-#fare-wrap h2 {
-  font-size: 22px;
-  margin-bottom: 8px;
-}
-
-.fare-note {
-  font-size: 13px;
-  color: #777;
-  margin-bottom: 20px;
-}
-
-.fare-section {
-  margin-bottom: 24px;
-}
-
-.fare-section h3 {
-  font-size: 18px;
-  margin-bottom: 10px;
-}
-
-.fare-table {
-  width: 100%;
-  border-collapse: collapse;
-  font-size: 14px;
-}
-
-.fare-table th,
-.fare-table td {
-  border: 1px solid #ddd;
-  padding: 8px 10px;
-}
-
-.fare-table th {
-  background: #f0f0f0;
-}
-
-.fare-list {
-  font-size: 14px;
-  padding-left: 18px;
-}
-
-/* 반응형 (기존) */
-@media (max-width: 900px) {
-  #sidebar {
-    width: 280px;
-  }
-}
-
-/* === 게시판 === */
+/* =====================================
+   ✨ 게시판 (PC 기본 스타일)
+===================================== */
 .board-container {
   max-width: 800px;
   margin: 0 auto;
@@ -323,7 +255,6 @@ body {
   margin-bottom: 1rem;
 }
 
-/* 작성 영역 (밝은 배경) */
 .board-form {
   background: #ffffff;
   border: 1px solid #dddddd;
@@ -341,24 +272,15 @@ body {
 .board-row label {
   font-size: 0.85rem;
   margin-bottom: 0.3rem;
-  color: #333333;
 }
 
 .board-row input,
 .board-row textarea {
-  background: #ffffff;
   border: 1px solid #cccccc;
+  background: #fff;
   border-radius: 4px;
-  padding: 0.5rem 0.6rem;
-  color: #222222;
+  padding: 0.5rem;
   font-size: 0.9rem;
-}
-
-.board-row input:focus,
-.board-row textarea:focus {
-  outline: none;
-  border-color: #12b886;
-  box-shadow: 0 0 0 2px rgba(18, 184, 134, 0.2);
 }
 
 .board-submit {
@@ -368,22 +290,7 @@ body {
   border: none;
   background: #12b886;
   color: #000;
-  font-weight: 600;
   cursor: pointer;
-}
-
-.board-submit:hover {
-  background: #20c997;
-}
-
-.board-list-wrapper h3 {
-  font-size: 1.1rem;
-  margin-bottom: 0.5rem;
-}
-
-.board-empty {
-  font-size: 0.9rem;
-  color: #888;
 }
 
 /* 게시글 카드 */
@@ -396,378 +303,157 @@ body {
 .board-item {
   background: #1a1a1a;
   border-radius: 6px;
-  padding: 0.7rem 0.9rem;
-  border: 1px solid #333;
-  color: #f5f5f5;
-}
-
-/* 게시글 헤더 (제목 + 삭제) */
-.board-item-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-bottom: 0.3rem;
+  padding: 0.8rem 1rem;
+  color: white;
 }
 
 .board-item-title {
-  font-weight: 600;
-  font-size: 0.95rem;
-  color: #ffffff;
+  font-size: 1rem;
+  font-weight: bold;
 }
 
 .board-item-meta {
-  font-size: 0.8rem;
-  color: #aaaaaa;
+  font-size: 0.85rem;
+  color: #ccc;
 }
 
 .board-item-content {
-  font-size: 0.9rem;
-  white-space: pre-wrap;
   margin-top: 0.3rem;
-  color: #eeeeee;
+  font-size: 0.95rem;
 }
 
-/* 게시글 이미지 */
-.board-image {
-  margin-top: 0.6rem;
-  max-width: 100%;
-  border-radius: 6px;
-  border: 1px solid #444;
+/* 댓글 */
+.board-comment-row {
+  font-size: 0.85rem;
 }
 
-/* 삭제 버튼 */
-.board-delete {
-  border: none;
-  background: transparent;
-  color: #ff6b6b;
-  font-size: 0.8rem;
-  cursor: pointer;
-}
-.board-delete:hover {
-  text-decoration: underline;
-}
-
-/* 좋아요 / 싫어요 – JS에서 board-like-row / board-like-btn 사용 */
-.board-like-row {
-  display: inline-flex;
-  align-items: center;
-  gap: 6px;
-  margin-top: 0.4rem;
-  margin-bottom: 0.2rem;
-}
-
+/* 좋아요 싫어요 */
 .board-like-btn {
-  border: none;
-  border-radius: 12px;
   padding: 2px 10px;
   font-size: 0.8rem;
-  cursor: pointer;
-  background: #333;
-  color: #ffd43b;
 }
 
-.board-like-btn:nth-child(2) {
-  color: #ff8787;
-}
-
-/* 댓글 목록 */
-.board-comment-list {
-  display: flex;
-  flex-direction: column;
-  gap: 4px;
-  margin-top: 0.3rem;
-}
-
-.board-comment-row {
-  display: flex;
-  flex-direction: column;
-  font-size: 0.82rem;
-  color: #f1f3f5;
-}
-
-.board-comment-text {
-  margin-bottom: 2px;
-}
-
-/* 대댓글 이미지 */
-.board-comment-image {
-  max-width: 160px;
-  border-radius: 4px;
-  border: 1px solid #444;
-}
-
-/* 대댓글 작성 폼 */
-.board-reply-form {
-  display: flex;
-  gap: 4px;
-  margin-top: 6px;
-  flex-wrap: wrap;
-}
-
-.board-reply-form input[type="text"] {
-  padding: 4px 6px;
-  border-radius: 4px;
-  border: 1px solid #444;
-  background: #111;
-  color: #f5f5f5;
-  font-size: 0.8rem;
-}
-
-.board-reply-form input[type="text"]:first-child {
-  width: 80px;
-}
-
-.board-reply-form input[type="text"]:nth-child(2) {
-  flex: 1;
-}
-
-.board-reply-form input[type="file"] {
-  font-size: 0.75rem;
-  color: #f5f5f5;
-}
-
-.board-reply-form button {
-  padding: 4px 10px;
-  border-radius: 4px;
-  border: none;
-  background: #12b886;
-  color: #000;
-  font-size: 0.8rem;
-  cursor: pointer;
-}
-
-.board-reply-form button:hover {
-  background: #20c997;
-}
-
-/* -----------------------------------
- 📱 모바일에서 사이드바 슬라이드
- (PC 화면에는 영향 없음)
------------------------------------ */
-.sidebar-toggle {
-  display: none; /* 기본: 숨김 (PC) */
-}
-
-/* 📱 768px 이하: 슬라이드 사이드바 + 폰트 살짝 줄이기 */
+/* =====================================
+   📱 모바일 768px 이하
+===================================== */
 @media (max-width: 768px) {
   body {
-    font-size: 14px;
+    font-size: 13px;
   }
 
   #topbar {
-    height: 52px;
-    padding: 0 12px;
-  }
-
-  .logo {
-    font-size: 22px;
-  }
-
-  .tab-btn {
-    font-size: 12px;
-    padding: 6px 10px;
-  }
-
-  .district-btn {
-    font-size: 11px;
-    padding: 5px 0;
-  }
-
-  .result-title {
-    font-size: 13px;
-  }
-
-  .result-meta,
-  .result-distance {
-    font-size: 11px;
-  }
-
-  .board-container {
-    padding: 12px 10px;
-  }
-
-  .board-item {
-    padding: 10px 12px;
-    border-radius: 6px;
-  }
-
-  .board-item-title {
-    font-size: 14px;
-  }
-
-  .board-item-meta {
-    font-size: 11px;
-  }
-
-  .board-item-content {
-    font-size: 13px;
-    line-height: 1.4;
-    word-break: break-word;
-  }
-
-  .board-like-row {
-    gap: 4px;
-  }
-
-  .board-like-btn {
-    font-size: 11px;
-    padding: 2px 8px;
-  }
-
-  .board-comment-row {
-    font-size: 12px;
-  }
-
-  .board-reply-form {
-    gap: 4px;
-  }
-
-  .board-reply-form input[type="text"] {
-    font-size: 11px;
-    padding: 4px 6px;
-  }
-
-  .board-reply-form button {
-    font-size: 11px;
-    padding: 4px 8px;
-  }
-
-  /* 슬라이드 사이드바 */
-  .sidebar-toggle {
-    display: inline-block;
-    margin: 8px 12px 0 12px;
-    padding: 6px 12px;
-    font-size: 13px;
-    border-radius: 999px;
-    border: none;
-    background: #ffffff;
-    color: #00a94c;
-    box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.08);
-  }
-
-  #layout {
-    position: relative;
-  }
-
-  #sidebar {
-    position: absolute;
-    left: 0;
-    top: 0;
-    bottom: 0;
-    width: 80%;
-    max-width: 320px;
-    z-index: 1000;
-    box-shadow: 2px 0 6px rgba(0, 0, 0, 0.25);
-    transform: translateX(-100%);
-    transition: transform 0.25s ease-in-out;
-  }
-
-  #sidebar.open {
-    transform: translateX(0);
-  }
-
-  #map {
-    flex: 1;
-  }
-}
-
-/* 📱 600px 이하: 글자 더 줄이고, 제목 한 줄 유지 */
-@media (max-width: 600px) {
-  body {
-    font-size: 14px;
-  }
-
-  #topbar {
-    height: 52px;
-    padding: 0 12px;
+    height: 48px;
+    padding: 0 10px;
   }
 
   .logo {
     font-size: 20px;
   }
 
-  .tab-nav {
-    gap: 4px;
-  }
-
   .tab-btn {
-    padding: 4px 10px;
-    font-size: 13px;
+    padding: 5px 8px;
+    font-size: 11px;
   }
 
-  #layout {
-    display: flex;
-    flex-direction: row;
+  .district-btn {
+    font-size: 10px;
+    padding: 4px 0;
+  }
+
+  .result-title {
+    font-size: 12px;
   }
 
   #sidebar {
-    width: 320px;
-    padding: 10px;
+    position: absolute;
+    left: 0;
+    width: 75%;
+    max-width: 300px;
+    transform: translateX(-100%);
+    transition: 0.25s;
+  }
+  #sidebar.open {
+    transform: translateX(0);
   }
 
-  #map {
-    height: calc(100vh - 52px);
+  .sidebar-toggle {
+    display: inline-block;
+    padding: 5px 12px;
+    background: #fff;
+    border-radius: 999px;
+    font-size: 12px;
+    margin: 8px;
+  }
+}
+
+/* =====================================
+   📱 모바일 600px 이하 (더 작게)
+===================================== */
+@media (max-width: 600px) {
+  body {
+    font-size: 12px;
   }
 
+  #topbar {
+    height: 45px;
+    padding: 0 8px;
+  }
+
+  .logo {
+    font-size: 18px;
+  }
+
+  .tab-btn {
+    padding: 4px 6px;
+    font-size: 10px;
+  }
+
+  #sidebar {
+    width: 260px;
+    padding: 8px;
+  }
+
+  .district-btn {
+    font-size: 9.5px;
+    padding: 3px 0;
+  }
+
+  .result-title {
+    font-size: 11px;
+  }
+
+  /* 게시판 폰트 축소 */
   .board-container {
-    max-width: 100%;
-    padding: 0.75rem 0.75rem 1.25rem;
+    padding: 1rem 0.7rem;
   }
 
-  /* ★ 제목이 줄바꿈 안 되도록 */
   .board-container h2 {
-    font-size: 1.2rem;
-    white-space: nowrap;   /* 한 줄 유지 */
-  }
-
-  .board-desc {
-    font-size: 0.85rem;
-  }
-
-  .board-form {
-    padding: 0.8rem;
+    font-size: 1.25rem;
+    white-space: nowrap;
   }
 
   .board-item {
-    border-radius: 6px;
+    padding: 0.6rem 0.8rem;
   }
 
   .board-item-title {
-    font-size: 0.95rem;
-  }
-
-  .board-item-content {
-    font-size: 0.85rem;
+    font-size: 0.9rem;
   }
 
   .board-item-meta {
-    font-size: 0.8rem;
+    font-size: 0.75rem;
   }
 
-  .board-like-row {
-    gap: 6px;
+  .board-item-content {
+    font-size: 0.8rem;
   }
 
   .board-like-btn {
-    font-size: 0.75rem;
-    padding: 2px 8px;
-  }
-
-  .board-reply-form {
-    gap: 4px;
-  }
-
-  .board-reply-form input[type="text"] {
-    font-size: 0.8rem;
-    padding: 4px 6px;
-  }
-
-  .board-reply-form input[type="file"] {
     font-size: 0.7rem;
+    padding: 2px 6px;
   }
 
-  .board-reply-form button {
-    font-size: 0.8rem;
-    padding: 4px 10px;
+  .board-comment-row {
+    font-size: 0.75rem;
   }
 }
