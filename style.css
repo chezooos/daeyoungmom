@@ -2,552 +2,689 @@
    PyeojinGothic 폰트
 --------------------------- */
 @font-face {
-    font-family: 'PyeojinGothic';
-    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/2504-1@1.0/PyeojinGothic-Light.woff2') format('woff2');
-    font-weight: 300;
-    font-display: swap;
+  font-family: 'PyeojinGothic';
+  src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/2504-1@1.0/PyeojinGothic-Light.woff2') format('woff2');
+  font-weight: 300;
+  font-display: swap;
 }
 @font-face {
-    font-family: 'PyeojinGothic';
-    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/2504-1@1.0/PyeojinGothic-Regular.woff2') format('woff2');
-    font-weight: 400;
-    font-display: swap;
+  font-family: 'PyeojinGothic';
+  src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/2504-1@1.0/PyeojinGothic-Regular.woff2') format('woff2');
+  font-weight: 400;
+  font-display: swap;
 }
 @font-face {
-    font-family: 'PyeojinGothic';
-    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/2504-1@1.0/PyeojinGothic-Bold.woff2') format('woff2');
-    font-weight: 700;
-    font-display: swap;
+  font-family: 'PyeojinGothic';
+  src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/2504-1@1.0/PyeojinGothic-Bold.woff2') format('woff2');
+  font-weight: 700;
+  font-display: swap;
 }
 
 /* 공통 */
 * {
-    box-sizing: border-box;
+  box-sizing: border-box;
 }
 
 body {
-    margin: 0;
-    font-family: 'PyeojinGothic', sans-serif;
-    height: 100vh;
-    display: flex;
-    flex-direction: column;
+  margin: 0;
+  font-family: 'PyeojinGothic', sans-serif;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
 }
 
 /* 상단 헤더 */
 #topbar {
-    height: 60px;
-    background: #00a94c;
-    color: white;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 0 24px;
+  height: 60px;
+  background: #00a94c;
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 24px;
 }
 
 .logo {
-    font-size: 30px;
-    font-weight: 700;
+  font-size: 30px;
+  font-weight: 700;
 }
 
 /* 탭 버튼 */
 .tab-nav {
-    display: flex;
-    gap: 8px;
+  display: flex;
+  gap: 8px;
 }
 
 .tab-btn {
-    border: none;
-    background: rgba(255, 255, 255, 0.15);
-    color: white;
-    padding: 8px 14px;
-    border-radius: 999px;
-    font-size: 14px;
-    cursor: pointer;
+  border: none;
+  background: rgba(255, 255, 255, 0.15);
+  color: white;
+  padding: 8px 14px;
+  border-radius: 999px;
+  font-size: 14px;
+  cursor: pointer;
 }
 .tab-btn.active {
-    background: #ffffff;
-    color: #00a94c;
+  background: #ffffff;
+  color: #00a94c;
 }
 
 /* 탭 컨테이너 */
 #tab-container {
-    flex: 1;
-    min-height: 0;
+  flex: 1;
+  min-height: 0;
 }
 
 .tab-content {
-    display: none;
-    height: calc(100vh - 60px);
+  display: none;
+  height: calc(100vh - 60px);
 }
 .tab-content.active {
-    display: block;
+  display: block;
 }
 
 /* 지도 탭 레이아웃 */
 #layout {
-    display: flex;
-    height: 100%;
+  display: flex;
+  height: 100%;
 }
 
 /* 왼쪽 패널 */
 #sidebar {
-    width: 360px;
-    background: #f7f7f7;
-    border-right: 1px solid #e0e0e0;
-    padding: 12px;
-    overflow-y: auto;
+  width: 360px;
+  background: #f7f7f7;
+  border-right: 1px solid #e0e0e0;
+  padding: 12px;
+  overflow-y: auto;
 }
 
 #currentGu {
-    font-size: 13px;
-    color: #555;
-    margin-bottom: 8px;
+  font-size: 13px;
+  color: #555;
+  margin-bottom: 8px;
 }
 
 #myLocationBtn {
-    width: 100%;
-    padding: 8px;
-    border-radius: 6px;
-    border: none;
-    background: #ffbc0d;
-    color: #222;
-    font-size: 14px;
-    font-weight: 700;
-    cursor: pointer;
-    margin-bottom: 10px;
+  width: 100%;
+  padding: 8px;
+  border-radius: 6px;
+  border: none;
+  background: #ffbc0d;
+  color: #222;
+  font-size: 14px;
+  font-weight: 700;
+  cursor: pointer;
+  margin-bottom: 10px;
 }
 #myLocationBtn:hover {
-    background: #ffd74f;
+  background: #ffd74f;
 }
 
 .line {
-    height: 1px;
-    background: #ddd;
-    margin: 10px 0;
+  height: 1px;
+  background: #ddd;
+  margin: 10px 0;
 }
 
 .category-title {
-    font-size: 13px;
-    font-weight: 700;
-    margin-bottom: 6px;
-    color: #444;
+  font-size: 13px;
+  font-weight: 700;
+  margin-bottom: 6px;
+  color: #444;
 }
 
 /* 구 버튼들 */
 #districtButtons {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 6px;
-    margin-bottom: 6px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-bottom: 6px;
 }
 
 .district-btn {
-    flex: 1 0 30%;
-    padding: 6px 4px;
-    background: #e4e4e4;
-    border-radius: 999px;
-    border: none;
-    font-size: 12px;
-    cursor: pointer;
-    text-align: center;
-    color: #333;
+  flex: 1 0 30%;
+  padding: 6px 4px;
+  background: #e4e4e4;
+  border-radius: 999px;
+  border: none;
+  font-size: 12px;
+  cursor: pointer;
+  text-align: center;
+  color: #333;
 }
 .district-btn:hover {
-    background: #d2f5df;
+  background: #d2f5df;
 }
 .district-btn.active {
-    background: #00a94c;
-    color: white;
+  background: #00a94c;
+  color: white;
 }
 
 /* 검색 박스 */
 .search-box {
-    display: flex;
-    gap: 6px;
-    margin-bottom: 8px;
+  display: flex;
+  gap: 6px;
+  margin-bottom: 8px;
 }
 
 #searchInput {
-    flex: 1;
-    padding: 7px 10px;
-    border-radius: 6px;
-    border: 1px solid #ccc;
-    font-size: 13px;
+  flex: 1;
+  padding: 7px 10px;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+  font-size: 13px;
 }
 
 #searchBtn {
-    padding: 7px 10px;
-    border-radius: 6px;
-    border: none;
-    background: #00a94c;
-    color: white;
-    font-size: 13px;
-    cursor: pointer;
+  padding: 7px 10px;
+  border-radius: 6px;
+  border: none;
+  background: #00a94c;
+  color: white;
+  font-size: 13px;
+  cursor: pointer;
 }
 
 /* 리스트 헤더 */
 #resultHeader {
-    font-size: 13px;
-    color: #555;
-    margin-bottom: 6px;
+  font-size: 13px;
+  color: #555;
+  margin-bottom: 6px;
 }
 
 #resultCount {
-    font-weight: 700;
-    color: #222;
+  font-weight: 700;
+  color: #222;
 }
 
 /* 결과 리스트 */
 #resultList {
-    display: flex;
-    flex-direction: column;
-    gap: 8px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
 }
 
 .result-item {
-    background: white;
-    border-radius: 8px;
-    padding: 9px 10px;
-    box-shadow: 0 0 0 1px #eee;
-    cursor: pointer;
-    transition: 0.15s;
+  background: white;
+  border-radius: 8px;
+  padding: 9px 10px;
+  box-shadow: 0 0 0 1px #eee;
+  cursor: pointer;
+  transition: 0.15s;
 }
 .result-item:hover {
-    box-shadow: 0 0 0 1px #00a94c;
-    background: #f5fff9;
+  box-shadow: 0 0 0 1px #00a94c;
+  background: #f5fff9;
 }
 
 .result-title {
-    font-size: 14px;
-    font-weight: 700;
-    margin-bottom: 3px;
-    color: #222;
+  font-size: 14px;
+  font-weight: 700;
+  margin-bottom: 3px;
+  color: #222;
 }
 
 .result-meta {
-    font-size: 12px;
-    color: #777;
-    margin-bottom: 3px;
+  font-size: 12px;
+  color: #777;
+  margin-bottom: 3px;
 }
 
 .result-distance {
-    font-size: 12px;
-    color: #00a94c;
-    font-weight: 700;
+  font-size: 12px;
+  color: #00a94c;
+  font-weight: 700;
 }
 
 /* 지도 */
 #map {
-    flex: 1;
-    height: 100%;
+  flex: 1;
+  height: 100%;
 }
 
 /* 📍 이모지 마커 */
 .station-marker {
-    font-size: 24px;
-    line-height: 24px;
-    text-align: center;
-    transform: translate(-50%, -100%);
+  font-size: 24px;
+  line-height: 24px;
+  text-align: center;
+  transform: translate(-50%, -100%);
 }
 
 /* 요금 탭 */
 #fare-wrap {
-    padding: 24px 40px;
-    max-width: 900px;
-    margin: 0 auto;
+  padding: 24px 40px;
+  max-width: 900px;
+  margin: 0 auto;
 }
 
 #fare-wrap h2 {
-    font-size: 22px;
-    margin-bottom: 8px;
+  font-size: 22px;
+  margin-bottom: 8px;
 }
 
 .fare-note {
-    font-size: 13px;
-    color: #777;
-    margin-bottom: 20px;
+  font-size: 13px;
+  color: #777;
+  margin-bottom: 20px;
 }
 
 .fare-section {
-    margin-bottom: 24px;
+  margin-bottom: 24px;
 }
 
 .fare-section h3 {
-    font-size: 18px;
-    margin-bottom: 10px;
+  font-size: 18px;
+  margin-bottom: 10px;
 }
 
 .fare-table {
-    width: 100%;
-    border-collapse: collapse;
-    font-size: 14px;
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 14px;
 }
 
 .fare-table th,
 .fare-table td {
-    border: 1px solid #ddd;
-    padding: 8px 10px;
+  border: 1px solid #ddd;
+  padding: 8px 10px;
 }
 
 .fare-table th {
-    background: #f0f0f0;
+  background: #f0f0f0;
 }
 
 .fare-list {
-    font-size: 14px;
-    padding-left: 18px;
+  font-size: 14px;
+  padding-left: 18px;
 }
 
-/* 반응형 */
+/* 반응형 – 기존: 화면 조금 줄어들면 사이드바 폭만 줄이기 */
 @media (max-width: 900px) {
-    #sidebar {
-        width: 280px;
-    }
+  #sidebar {
+      width: 280px;
+  }
 }
 
 /* === 게시판 === */
 .board-container {
-  max-width: 800px;
-  margin: 0 auto;
-  padding: 1.5rem;
+max-width: 800px;
+margin: 0 auto;
+padding: 1.5rem;
 }
 
 .board-container h2 {
-  font-size: 1.6rem;
-  margin-bottom: 0.5rem;
+font-size: 1.6rem;
+margin-bottom: 0.5rem;
 }
 
 .board-desc {
-  font-size: 0.9rem;
-  color: #555;
-  margin-bottom: 1rem;
+font-size: 0.9rem;
+color: #555;
+margin-bottom: 1rem;
 }
 
 /* 작성 영역 (밝은 배경) */
 .board-form {
-  background: #ffffff;
-  border: 1px solid #dddddd;
-  border-radius: 8px;
-  padding: 1rem;
-  margin-bottom: 1.5rem;
+background: #ffffff;
+border: 1px solid #dddddd;
+border-radius: 8px;
+padding: 1rem;
+margin-bottom: 1.5rem;
 }
 
 .board-row {
-  display: flex;
-  flex-direction: column;
-  margin-bottom: 0.8rem;
+display: flex;
+flex-direction: column;
+margin-bottom: 0.8rem;
 }
 
 .board-row label {
-  font-size: 0.85rem;
-  margin-bottom: 0.3rem;
-  color: #333333;
+font-size: 0.85rem;
+margin-bottom: 0.3rem;
+color: #333333;
 }
 
 .board-row input,
 .board-row textarea {
-  background: #ffffff;
-  border: 1px solid #cccccc;
-  border-radius: 4px;
-  padding: 0.5rem 0.6rem;
-  color: #222222;
-  font-size: 0.9rem;
+background: #ffffff;
+border: 1px solid #cccccc;
+border-radius: 4px;
+padding: 0.5rem 0.6rem;
+color: #222222;
+font-size: 0.9rem;
 }
 
 .board-row input:focus,
 .board-row textarea:focus {
-  outline: none;
-  border-color: #12b886;
-  box-shadow: 0 0 0 2px rgba(18, 184, 134, 0.2);
+outline: none;
+border-color: #12b886;
+box-shadow: 0 0 0 2px rgba(18, 184, 134, 0.2);
 }
 
 .board-submit {
-  margin-top: 0.3rem;
-  padding: 0.5rem 1.2rem;
-  border-radius: 4px;
-  border: none;
-  background: #12b886;
-  color: #000;
-  font-weight: 600;
-  cursor: pointer;
+margin-top: 0.3rem;
+padding: 0.5rem 1.2rem;
+border-radius: 4px;
+border: none;
+background: #12b886;
+color: #000;
+font-weight: 600;
+cursor: pointer;
 }
 
 .board-submit:hover {
-  background: #20c997;
+background: #20c997;
 }
 
 .board-list-wrapper h3 {
-  font-size: 1.1rem;
-  margin-bottom: 0.5rem;
+font-size: 1.1rem;
+margin-bottom: 0.5rem;
 }
 
 .board-empty {
-  font-size: 0.9rem;
-  color: #888;
+font-size: 0.9rem;
+color: #888;
 }
 
 /* 게시글 카드 */
 .board-list {
-  display: flex;
-  flex-direction: column;
-  gap: 0.6rem;
+display: flex;
+flex-direction: column;
+gap: 0.6rem;
 }
 
 .board-item {
-  background: #1a1a1a;
-  border-radius: 6px;
-  padding: 0.7rem 0.9rem;
-  border: 1px solid #333;
-  color: #f5f5f5;
+background: #1a1a1a;
+border-radius: 6px;
+padding: 0.7rem 0.9rem;
+border: 1px solid #333;
+color: #f5f5f5;
 }
 
 /* 게시글 헤더 (제목 + 오른쪽 영역) */
 .board-item-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-bottom: 0.3rem;
+display: flex;
+justify-content: space-between;
+align-items: center;
+margin-bottom: 0.3rem;
 }
 
 .board-header-right {
-  display: flex;
-  align-items: center;
-  gap: 8px;
+display: flex;
+align-items: center;
+gap: 8px;
 }
 
 .board-item-title {
-  font-weight: 600;
-  font-size: 0.95rem;
-  color: #ffffff;
+font-weight: 600;
+font-size: 0.95rem;
+color: #ffffff;
 }
 
 .board-item-meta {
-  font-size: 0.8rem;
-  color: #aaaaaa;
+font-size: 0.8rem;
+color: #aaaaaa;
 }
 
 .board-item-content {
-  font-size: 0.9rem;
-  white-space: pre-wrap;
-  margin-top: 0.3rem;
-  color: #eeeeee;
+font-size: 0.9rem;
+white-space: pre-wrap;
+margin-top: 0.3rem;
+color: #eeeeee;
 }
 
 /* 게시글 이미지 */
 .board-image {
-  margin-top: 0.6rem;
-  max-width: 100%;
-  border-radius: 6px;
-  border: 1px solid #444;
+margin-top: 0.6rem;
+max-width: 100%;
+border-radius: 6px;
+border: 1px solid #444;
 }
 
 /* 삭제 버튼 */
 .board-delete {
-  border: none;
-  background: transparent;
-  color: #ff6b6b;
-  font-size: 0.8rem;
-  cursor: pointer;
+border: none;
+background: transparent;
+color: #ff6b6b;
+font-size: 0.8rem;
+cursor: pointer;
 }
 .board-delete:hover {
-  text-decoration: underline;
+text-decoration: underline;
 }
 
 /* 좋아요 / 싫어요 */
-.reaction-box {
-  display: flex;
-  gap: 4px;
+.board-like-row {
+margin-top: 0.4rem;
+display: flex;
+gap: 4px;
 }
 
-.reaction-btn {
-  border: none;
-  border-radius: 4px;
-  padding: 2px 8px;
-  font-size: 0.8rem;
-  cursor: pointer;
-}
-
-.reaction-like {
-  background: #333;
-  color: #ffd43b;
-}
-
-.reaction-dislike {
-  background: #333;
-  color: #ff8787;
+.board-like-btn {
+border: none;
+border-radius: 4px;
+padding: 2px 8px;
+font-size: 0.8rem;
+cursor: pointer;
+background: #333;
+color: #f5f5f5;
 }
 
 /* ===== 대댓글 ===== */
-.reply-box {
-  margin-top: 0.6rem;
+.board-comment-list {
+margin-top: 0.5rem;
+display: flex;
+flex-direction: column;
+gap: 4px;
 }
 
-.reply-list {
-  display: flex;
-  flex-direction: column;
-  gap: 4px;
-  margin-bottom: 0.4rem;
+.board-comment-row {
+font-size: 0.85rem;
+color: #f1f3f5;
+display: flex;
+flex-direction: column;
+gap: 2px;
 }
 
-.reply-item {
-  font-size: 0.85rem;
-  color: #f1f3f5;
-}
-
-.reply-text {
-  margin-bottom: 2px;
+.board-comment-text {
+margin-bottom: 2px;
 }
 
 /* 대댓글 이미지 */
-.reply-image {
-  max-width: 160px;
-  border-radius: 4px;
-  border: 1px solid #444;
+.board-comment-image {
+max-width: 160px;
+border-radius: 4px;
+border: 1px solid #444;
 }
 
 /* 대댓글 작성 폼 – 이름은 짧게, 내용은 길게 */
-.reply-form {
-  display: flex;
-  gap: 4px;
-  margin-top: 4px;
+.board-reply-form {
+display: flex;
+gap: 4px;
+margin-top: 4px;
 }
 
-.reply-name {
+.board-reply-form input[type="text"] {
+padding: 4px 6px;
+border-radius: 4px;
+border: 1px solid #444;
+background: #111;
+color: #f5f5f5;
+font-size: 0.8rem;
+}
+
+.board-reply-form input[type="file"] {
+width: 140px;
+font-size: 0.75rem;
+color: #f5f5f5;
+}
+
+.board-reply-form button {
+padding: 4px 10px;
+border-radius: 4px;
+border: none;
+background: #12b886;
+color: #000;
+font-size: 0.8rem;
+cursor: pointer;
+}
+
+.board-reply-form button:hover {
+background: #20c997;
+}
+
+/* =========================================
+ 📱 진짜 반응형 – 모바일/태블릿 대응
+ ========================================= */
+
+/* 1) 태블릿 & 작은 노트북 (≤ 1024px) */
+@media (max-width: 1024px) {
+body {
+  height: auto;
+}
+
+#tab-container {
+  height: auto;
+}
+
+.tab-content {
+  height: auto;
+}
+
+#map {
+  min-height: 420px;
+}
+}
+
+/* 2) 모바일 & 작은 태블릿 (≤ 768px) */
+@media (max-width: 768px) {
+body {
+  height: auto;
+}
+
+#topbar {
+  height: auto;
+  padding: 8px 16px;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 6px;
+}
+
+.logo {
+  font-size: 22px;
+}
+
+.tab-nav {
+  width: 100%;
+  justify-content: flex-start;
+  overflow-x: auto;
+}
+
+.tab-btn {
+  font-size: 13px;
+  padding: 6px 12px;
+  white-space: nowrap;
+}
+
+/* 지도 + 사이드바를 세로로 배치 */
+#layout {
+  flex-direction: column;
+  height: auto;
+}
+
+#sidebar {
+  width: 100%;
+  border-right: none;
+  border-bottom: 1px solid #e0e0e0;
+  max-height: 360px;
+  overflow-y: auto;
+}
+
+#map {
+  width: 100%;
+  height: 360px;
+}
+
+/* 검색/리스트 패딩 조금 줄이기 */
+#sidebar {
+  padding: 10px;
+}
+
+#resultList {
+  gap: 6px;
+}
+
+.result-item {
+  padding: 8px 9px;
+}
+
+/* 요금 안내 패딩 줄이기 */
+#fare-wrap {
+  padding: 16px 16px 24px;
+}
+
+/* 게시판 컨테이너 여백 조정 */
+.board-container {
+  padding: 1rem;
+}
+
+.board-item {
+  padding: 0.6rem 0.7rem;
+}
+
+/* 대댓글 폼이 너무 가로로 길어지지 않게 줄 세우기 */
+.board-reply-form {
+  flex-wrap: wrap;
+}
+
+.board-reply-form input[type="text"]:first-child {
   width: 80px;
-  padding: 4px 6px;
-  border-radius: 4px;
-  border: 1px solid #444;
-  background: #111;
-  color: #f5f5f5;
-  font-size: 0.8rem;
 }
 
-.reply-content {
-  flex: 1;
-  padding: 4px 6px;
-  border-radius: 4px;
-  border: 1px solid #444;
-  background: #111;
-  color: #f5f5f5;
-  font-size: 0.8rem;
+.board-reply-form input[type="text"]:nth-child(2) {
+  flex: 1 1 150px;
 }
 
-.reply-image-input {
-  width: 140px;
-  font-size: 0.75rem;
-  color: #f5f5f5;
+.board-reply-form input[type="file"] {
+  flex: 1 1 100%;
 }
 
-.reply-submit {
-  padding: 4px 10px;
-  border-radius: 4px;
-  border: none;
-  background: #12b886;
-  color: #000;
-  font-size: 0.8rem;
-  cursor: pointer;
+.board-reply-form button {
+  flex: 0 0 auto;
+}
 }
 
-.reply-submit:hover {
-  background: #20c997;
+/* 3) 아주 작은 화면 (≤ 480px) – 폰 세로 기준 */
+@media (max-width: 480px) {
+.logo {
+  font-size: 20px;
+}
+
+#sidebar {
+  max-height: 320px;
+}
+
+#map {
+  height: 320px;
+}
+
+.result-title {
+  font-size: 13px;
+}
+
+.board-container h2 {
+  font-size: 1.3rem;
+}
+
+.board-item-content {
+  font-size: 0.85rem;
+}
+
+.board-like-row {
+  gap: 2px;
+}
+
+.board-like-btn {
+  padding: 2px 6px;
+}
 }
