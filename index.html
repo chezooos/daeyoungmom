@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8" />
+    <title>따릉이 지도</title>
+    <link rel="stylesheet" href="style.css" />
+
+    <!-- Leaflet -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+    <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+
+    <!-- PapaParse -->
+    <script src="https://cdn.jsdelivr.net/npm/papaparse@5.4.1/papaparse.min.js"></script>
+
+    <!-- Supabase (브라우저용 UMD) -->
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.min.js"></script>
+</head>
+<body>
+
+<header id="topbar">
+    <div class="logo">🚲 따릉이 지도</div>
+
+    <nav class="tab-nav">
+        <button class="tab-btn active" data-target="tab-map">지도</button>
+        <button class="tab-btn" data-target="tab-fare">요금안내</button>
+        <button class="tab-btn" data-target="tab-board">게시판</button>
+    </nav>
+</header>
+
+<main id="tab-container">
+
+    <!-- ========================= -->
+    <!-- 📍 지도 탭 -->
+    <!-- ========================= -->
+    <section id="tab-map" class="tab-content active">
+        <div id="layout">
+
+            <!-- 왼쪽 사이드바 -->
+            <aside id="sidebar">
+                <div id="currentGu">현재 위치: -</div>
+                <button id="myLocationBtn">내 위치 불러오기</button>
+
+                <div class="line"></div>
+
+                <p class="category-title">구 선택</p>
+                <div id="districtButtons"></div>
+
+                <div class="line"></div>
+
+                <div class="search-box">
+                    <input id="searchInput" type="text" placeholder="대여소명, 구, 주소로 검색" />
+                    <button id="searchBtn">검색</button>
+                </div>
+
+                <div id="resultHeader">
+                    따릉이 대여소 <span id="resultCount">0</span>곳
+                </div>
+
+                <div id="resultList">데이터 로딩 중...</div>
+            </aside>
+
+            <!-- 지도 -->
+            <div id="map"></div>
+
+        </div>
+    </section>
+
+    <!-- ========================= -->
+    <!-- 💸 요금안내 탭 -->
+    <!-- ========================= -->
+    <section id="tab-fare" class="tab-content">
+        <div id="fare-wrap">
+            <h2>요금안내 (예시)</h2>
+            <p class="fare-note">※ 실제 요금과 다를 수 있습니다.</p>
+
+            <div class="fare-section">
+                <h3>정기권</h3>
+                <table class="fare-table">
+                    <thead>
+                        <tr><th>상품</th><th>이용시간</th><th>가격</th></tr>
+                    </thead>
+                    <tbody>
+                        <tr><td>7일권</td><td>1시간</td><td>3,000원</td></tr>
+                        <tr><td>30일권</td><td>1시간</td><td>5,000원</td></tr>
+                        <tr><td>365일권</td><td>1시간</td><td>70,000원</td></tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="fare-section">
+                <h3>1회권</h3>
+                <table class="fare-table">
+                    <thead>
+                        <tr><th>상품</th><th>이용시간</th><th>가격</th></tr>
+                    </thead>
+                    <tbody>
+                        <tr><td>1일권</td><td>1시간</td><td>1,000원</td></tr>
+                        <tr><td>1일권</td><td>2시간</td><td>2,000원</td></tr>
+                    </tbody>
+                </table>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- ========================= -->
+    <!-- 📝 게시판 탭 -->
+    <!-- ========================= -->
+    <section id="tab-board" class="tab-content">
+
+        <div class="board-container">
+            <h2>불편사항 게시판</h2>
+            <p class="board-desc">따릉이 이용 중 불편한 점을 남겨주세요.</p>
+
+            <!-- 글쓰기 -->
+            <form id="boardForm" class="board-form">
+                <div class="board-row">
+                    <label for="boardName">이름</label>
+                    <input type="text" id="boardName" required>
+                </div>
+
+                <div class="board-row">
+                    <label for="boardTitle">제목</label>
+                    <input type="text" id="boardTitle" required>
+                </div>
+
+                <div class="board-row">
+                    <label for="boardContent">내용</label>
+                    <textarea id="boardContent" rows="4" required></textarea>
+                </div>
+
+                <div class="board-row">
+                    <label>사진 첨부 (선택)</label>
+                    <input type="file" id="boardImage" accept="image/*">
+                </div>
+
+                <button type="submit" class="board-submit">등록하기</button>
+            </form>
+
+            <!-- 글 목록 -->
+            <div class="board-list-wrapper">
+                <h3>작성된 불편사항</h3>
+                <p id="boardEmpty" class="board-empty">아직 등록된 글이 없습니다.</p>
+                <div id="boardList" class="board-list"></div>
+            </div>
+        </div>
+
+    </section>
+
+</main>
+
+<script src="app.js"></script>
+</body>
+</html>
