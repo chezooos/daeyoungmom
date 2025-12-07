@@ -2,8 +2,6 @@
 <html lang="ko">
 <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-
     <title>따릉이 지도</title>
     <link rel="stylesheet" href="style.css" />
 
@@ -14,8 +12,8 @@
     <!-- PapaParse -->
     <script src="https://cdn.jsdelivr.net/npm/papaparse@5.4.1/papaparse.min.js"></script>
 
-    <!-- Supabase (브라우저용 UMD) -->
-    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.min.js"></script>
+    <!-- Supabase -->
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 </head>
 <body>
 
@@ -35,6 +33,10 @@
     <!-- 📍 지도 탭 -->
     <!-- ========================= -->
     <section id="tab-map" class="tab-content active">
+
+        <!-- ✅ 모바일에서만 보이는 사이드바 토글 버튼 -->
+        <button id="sidebarToggle" class="sidebar-toggle">구 / 검색 열기</button>
+
         <div id="layout">
 
             <!-- 왼쪽 사이드바 -->

@@ -10,7 +10,10 @@ const SUPABASE_URL = "https://zumedjwdcqzgiawvtrvv.supabase.co";
 const SUPABASE_ANON_KEY =
   "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Inp1bWVkandkY3F6Z2lhd3Z0cnZ2Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NjQ3MzkzOTQsImV4cCI6MjA4MDMxNTM5NH0.1FFz6aCSMCT1ropLIQNCprVDp0t9gB7U7y_XOvYWv4U";
 
-const supabase = window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+const supabase = window.supabase.createClient(
+  SUPABASE_URL,
+  SUPABASE_ANON_KEY
+);
 
 // ===============================
 // 1. 지도 기본 설정
@@ -60,7 +63,7 @@ const districtCenters = {
   송파구: [37.5145, 127.1056],
   양천구: [37.5169, 126.8664],
   영등포구: [37.5264, 126.8962],
-  용산구: [37.5324, 126.9904],
+  용산구: [37.5324, 126.99],
   은평구: [37.6177, 126.9227],
   종로구: [37.573, 126.9794],
   중구: [37.563, 126.9976],
@@ -83,19 +86,23 @@ const searchInput = document.getElementById("searchInput");
 const searchBtn = document.getElementById("searchBtn");
 const myLocationBtn = document.getElementById("myLocationBtn");
 const districtButtonsEl = document.getElementById("districtButtons");
+const sidebar = document.getElementById("sidebar");
+const sidebarToggle = document.getElementById("sidebarToggle");
 
 // ===============================
 // 4. 탭 전환
 // ===============================
 document.querySelectorAll(".tab-btn").forEach((btn) => {
   btn.addEventListener("click", () => {
-    document.querySelectorAll(".tab-btn").forEach((b) => b.classList.remove("active"));
+    document
+      .querySelectorAll(".tab-btn")
+      .forEach((b) => b.classList.remove("active"));
     btn.classList.add("active");
 
     const target = btn.getAttribute("data-target");
-    document.querySelectorAll(".tab-content").forEach((sec) =>
-      sec.classList.remove("active")
-    );
+    document
+      .querySelectorAll(".tab-content")
+      .forEach((sec) => sec.classList.remove("active"));
     document.getElementById(target).classList.add("active");
 
     if (target === "tab-map") {
@@ -103,6 +110,15 @@ document.querySelectorAll(".tab-btn").forEach((btn) => {
     }
   });
 });
+
+// ===============================
+// 4-1. 사이드바 토글 (모바일)
+// ===============================
+if (sidebar && sidebarToggle) {
+  sidebarToggle.addEventListener("click", () => {
+    sidebar.classList.toggle("open");
+  });
+}
 
 // ===============================
 // 5. 구 카테고리 버튼 생성
@@ -151,8 +167,11 @@ Papa.parse("data/stations.csv", {
     allStations = results.data
       .map((row) => {
         const name = row.name || row.대여소명 || row.대여소명칭 || row.대여소;
+
         const district = row.district || row.자치구 || row.gu || row.구;
+
         const address = row.address || row.주소 || "";
+
         const lat = parseFloat(row.lat || row.latitude || row.위도);
         const lng = parseFloat(row.lng || row.longitude || row.경도);
 
@@ -183,7 +202,8 @@ Papa.parse("data/stations.csv", {
   },
   error: function (err) {
     console.error("CSV 파싱 에러:", err);
-    resultListEl.textContent = "데이터를 불러오지 못했습니다. (csv 경로/이름 확인)";
+    resultListEl.textContent =
+      "데이터를 불러오지 못했습니다. (csv 경로/이름 확인)";
   },
 });
 
@@ -215,6 +235,7 @@ async function fetchRealTimeData() {
       const text = await res.text();
       console.log(`응답(앞 120자, ${start}~${end}):`, text.slice(0, 120));
 
+      // 에러면 XML로 오거나 <RESULT>로 시작 → 스킵
       if (text.trim().startsWith("<RESULT>")) {
         console.warn(`⚠ ${start}~${end} 구간에서 API 에러 발생, 스킵`);
         continue;
@@ -243,7 +264,7 @@ async function fetchRealTimeData() {
 }
 
 // ===============================
-// 8. 실시간 데이터 매칭 (이름 우선 + 좌표 보정)
+// 8. 실시간 데이터 매칭
 // ===============================
 async function enhanceWithRealTime() {
   console.log("🔥 enhanceWithRealTime 호출됨");
@@ -306,7 +327,7 @@ async function enhanceWithRealTime() {
   });
 
   console.log(
-    `실시간 매칭 완료: 이름으로 ${matchedByName}개, 좌표로 ${matchedByPos}개`,
+    `실시간 매칭 완료: 이름으로 ${matchedByName}개, 좌표로 ${matchedByPos}개`
   );
 
   drawMarkers(filteredStations);
@@ -357,7 +378,9 @@ function updateList(stations) {
 
     const meta = document.createElement("div");
     meta.classList.add("result-meta");
-    meta.textContent = `${st.district}${st.address ? " · " + st.address : ""}`;
+    meta.textContent = `${st.district}${
+      st.address ? " · " + st.address : ""
+    }`;
 
     const distance = document.createElement("div");
     distance.classList.add("result-distance");
@@ -416,7 +439,7 @@ function applyFilter(moveMap) {
         myLocation.lat,
         myLocation.lng,
         st.lat,
-        st.lng,
+        st.lng
       );
     });
     list.sort((a, b) => (a.distance ?? 9999) - (b.distance ?? 9999));
@@ -483,7 +506,7 @@ myLocationBtn.addEventListener("click", () => {
     },
     {
       enableHighAccuracy: true,
-    },
+    }
   );
 });
 
@@ -579,7 +602,7 @@ function renderBoardPosts() {
     const item = document.createElement("div");
     item.classList.add("board-item");
 
-    // 헤더 (제목 + 오른쪽 영역(좋아요/싫어요/삭제))
+    // 헤더 (제목 + 삭제)
     const header = document.createElement("div");
     header.classList.add("board-item-header");
 
@@ -587,15 +610,61 @@ function renderBoardPosts() {
     title.classList.add("board-item-title");
     title.textContent = post.title;
 
-    const headerRight = document.createElement("div");
-    headerRight.classList.add("board-header-right");
+    const delBtn = document.createElement("button");
+    delBtn.classList.add("board-delete");
+    delBtn.textContent = "삭제";
+    delBtn.addEventListener("click", async () => {
+      if (!confirm("이 글을 삭제할까요?")) return;
 
-    // 👍 / 👎 버튼 영역 (제목 오른쪽에 위치)
+      const { error } = await supabase
+        .from("posts")
+        .delete()
+        .eq("id", post.id);
+
+      if (error) {
+        console.error("삭제 실패:", error);
+        alert("삭제 중 오류가 발생했습니다.");
+        return;
+      }
+      await fetchBoardData();
+    });
+
+    header.appendChild(title);
+    header.appendChild(delBtn);
+
+    // 메타
+    const meta = document.createElement("div");
+    meta.classList.add("board-item-meta");
+    const createdAt = new Date(post.created_at);
+    const createdStr = `${createdAt.getFullYear()}.${String(
+      createdAt.getMonth() + 1
+    ).padStart(2, "0")}.${String(createdAt.getDate()).padStart(
+      2,
+      "0"
+    )} ${String(createdAt.getHours()).padStart(2, "0")}:${String(
+      createdAt.getMinutes()
+    ).padStart(2, "0")}`;
+    meta.textContent = `${post.name} · ${createdStr}`;
+
+    // 내용
+    const content = document.createElement("div");
+    content.classList.add("board-item-content");
+    content.textContent = post.content;
+
+    // 이미지
+    if (post.image_url) {
+      const img = document.createElement("img");
+      img.src = post.image_url;
+      img.classList.add("board-image");
+      item.appendChild(img);
+    }
+
+    // 👍 / 👎 버튼 영역
     const likeBox = document.createElement("div");
-    likeBox.classList.add("reaction-box");
+    likeBox.classList.add("board-like-row");
 
     const likeBtn = document.createElement("button");
-    likeBtn.classList.add("reaction-btn", "reaction-like");
+    likeBtn.classList.add("board-like-btn");
     likeBtn.innerHTML = `👍 <span>${post.like_count ?? 0}</span>`;
 
     likeBtn.addEventListener("click", async () => {
@@ -615,7 +684,7 @@ function renderBoardPosts() {
     });
 
     const dislikeBtn = document.createElement("button");
-    dislikeBtn.classList.add("reaction-btn", "reaction-dislike");
+    dislikeBtn.classList.add("board-like-btn");
     dislikeBtn.innerHTML = `👎 <span>${post.dislike_count ?? 0}</span>`;
 
     dislikeBtn.addEventListener("click", async () => {
@@ -637,67 +706,16 @@ function renderBoardPosts() {
     likeBox.appendChild(likeBtn);
     likeBox.appendChild(dislikeBtn);
 
-    // 삭제 버튼
-    const delBtn = document.createElement("button");
-    delBtn.classList.add("board-delete");
-    delBtn.textContent = "삭제";
-    delBtn.addEventListener("click", async () => {
-      if (!confirm("이 글을 삭제할까요?")) return;
-
-      const { error } = await supabase.from("posts").delete().eq("id", post.id);
-
-      if (error) {
-        console.error("삭제 실패:", error);
-        alert("삭제 중 오류가 발생했습니다.");
-        return;
-      }
-      await fetchBoardData();
-    });
-
-    // 오른쪽 영역에 [좋아요/싫어요] + [삭제] 순서로 배치
-    headerRight.appendChild(likeBox);
-    headerRight.appendChild(delBtn);
-
-    header.appendChild(title);
-    header.appendChild(headerRight);
-
-    // 메타
-    const meta = document.createElement("div");
-    meta.classList.add("board-item-meta");
-    const createdAt = new Date(post.created_at);
-    const createdStr = `${createdAt.getFullYear()}.${String(
-      createdAt.getMonth() + 1,
-    ).padStart(2, "0")}.${String(createdAt.getDate()).padStart(
-      2,
-      "0",
-    )} ${String(createdAt.getHours()).padStart(2, "0")}:${String(
-      createdAt.getMinutes(),
-    ).padStart(2, "0")}`;
-    meta.textContent = `${post.name} · ${createdStr}`;
-
-    // 내용
-    const content = document.createElement("div");
-    content.classList.add("board-item-content");
-    content.textContent = post.content;
-
-    // 이미지
-    if (post.image_url) {
-      const img = document.createElement("img");
-      img.src = post.image_url;
-      img.classList.add("board-image");
-      item.appendChild(img);
-    }
-
-    // 댓글 목록 (CSS: reply-list / reply-item / reply-text / reply-image)
+    // 댓글 목록
     const commentList = document.createElement("div");
-    commentList.classList.add("reply-list");
+    commentList.classList.add("board-comment-list");
 
     comments.forEach((c) => {
       const row = document.createElement("div");
-      row.classList.add("reply-item");
+      row.classList.add("board-comment-row");
 
       const text = document.createElement("div");
-      text.classList.add("reply-text");
+      text.classList.add("board-comment-text");
       text.textContent = `${c.name} : ${c.content}`;
 
       row.appendChild(text);
@@ -705,36 +723,32 @@ function renderBoardPosts() {
       if (c.image_url) {
         const cImg = document.createElement("img");
         cImg.src = c.image_url;
-        cImg.classList.add("reply-image");
+        cImg.classList.add("board-comment-image");
         row.appendChild(cImg);
       }
 
       commentList.appendChild(row);
     });
 
-    // 대댓글 작성 폼 (CSS: reply-form / reply-name / reply-content / reply-image-input / reply-submit)
+    // 대댓글 작성 폼 (이름 / 내용 / 이미지)
     const replyForm = document.createElement("form");
-    replyForm.classList.add("reply-form");
+    replyForm.classList.add("board-reply-form");
 
     const replyName = document.createElement("input");
     replyName.type = "text";
     replyName.placeholder = "이름";
-    replyName.classList.add("reply-name");
 
     const replyContent = document.createElement("input");
     replyContent.type = "text";
     replyContent.placeholder = "대댓글 내용";
-    replyContent.classList.add("reply-content");
 
     const replyFile = document.createElement("input");
     replyFile.type = "file";
     replyFile.accept = "image/*";
-    replyFile.classList.add("reply-image-input");
 
     const replyBtn = document.createElement("button");
     replyBtn.type = "submit";
     replyBtn.textContent = "등록";
-    replyBtn.classList.add("reply-submit");
 
     replyForm.appendChild(replyName);
     replyForm.appendChild(replyContent);
@@ -774,6 +788,7 @@ function renderBoardPosts() {
     item.appendChild(header);
     item.appendChild(meta);
     item.appendChild(content);
+    item.appendChild(likeBox);
     item.appendChild(commentList);
     item.appendChild(replyForm);
 
